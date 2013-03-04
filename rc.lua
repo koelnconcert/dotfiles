@@ -12,6 +12,8 @@ require("revelation")
 -- Load Debian menu entries
 require("debian.menu")
 
+runonce = require("runonce")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -381,4 +383,6 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn("conky")
+runonce.run("conky")
+runonce.run("glipper")
+runonce.run("pidgin")
