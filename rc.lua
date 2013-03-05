@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+require("vicious")
 require("revelation")
 
 -- Load Debian menu entries
@@ -111,6 +112,34 @@ mytextclock = awful.widget.textclock({ align = "right" })
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
+-- {{{ Reusable separator
+separator = widget({ type = "textbox" })
+separator.text = "  "
+-- }}}
+
+-- {{{ Volume level
+-- Initialize widgets
+volbar = awful.widget.progressbar()
+volwidget = widget({ type = "textbox" })
+-- Progressbar properties
+volbar:set_vertical(true):set_ticks(true)
+volbar:set_height(16):set_width(8):set_ticks_size(2)
+volbar:set_background_color("#494B4F")
+volbar:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+-- Enable caching
+vicious.cache(vicious.widgets.volume)
+-- Register widgets
+vicious.register(volbar, vicious.widgets.volume, "$1", 2, "Master")
+vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "Master")
+-- Register buttons
+volbar.widget:buttons(awful.util.table.join(
+   awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e alsamixer") end),
+   awful.button({ }, 4, function () awful.util.spawn("amixer -q set Master 2dB+", false) end),
+   awful.button({ }, 5, function () awful.util.spawn("amixer -q set Master 2dB-", false) end)
+)) -- Register assigned buttons
+volwidget:buttons(volbar.widget:buttons())
+-- }}}
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -182,13 +211,13 @@ for s = 1, screen.count() do
         {
             mylauncher,
             mytaglist[s],
-            mypromptbox[s],
+            mypromptbox[s], separator,
             layout = awful.widget.layout.horizontal.leftright
         },
-        mylayoutbox[s],
-        mytextclock,
+        mylayoutbox[s], separator,
+        volwidget, volbar.widget, separator,
         s == 1 and mysystray or nil,
-        mytasklist[s],
+        separator, mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
 end
