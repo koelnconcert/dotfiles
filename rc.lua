@@ -140,6 +140,34 @@ volbar.widget:buttons(awful.util.table.join(
 volwidget:buttons(volbar.widget:buttons())
 -- }}}
 
+--Create a weather widget
+
+metarid = "eddv"
+weatherwidget = widget({ type = "textbox" })
+weatherwidget.text = awful.util.pread(
+  "weather " .. metarid .. " --headers=Temperature --quiet -m | awk '{print $2, $3}'"
+) -- replace METARID with the metar ID for your area. This uses metric. If you prefer Fahrenheit remove the "-m" in "--quiet -m".
+weathertimer = timer(
+  { timeout = 900 } -- Update every 15 minutes.
+)
+weathertimer:add_signal(
+  "timeout", function()
+     weatherwidget.text = awful.util.pread(
+     "weather " .. metarid .. " --headers=Temperature --quiet -m | awk '{print $2, $3}' &"
+   ) --replace METARID and remove -m if you want Fahrenheit
+ end)
+
+weathertimer:start() -- Start the timer
+weatherwidget:add_signal(
+"mouse::enter", function()
+  weather = naughty.notify(
+    {title="Weather",text=awful.util.pread("weather " .. metarid .. " -m")})
+  end) -- this creates the hover feature. replace METARID and remove -m if you want Fahrenheit
+weatherwidget:add_signal(
+  "mouse::leave", function()
+    naughty.destroy(weather)
+  end)
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -216,6 +244,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s], separator,
         volwidget, volbar.widget, separator,
+        weatherwidget, separator,
         s == 1 and mysystray or nil,
         separator, mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
