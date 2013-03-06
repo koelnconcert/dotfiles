@@ -134,8 +134,14 @@ vicious.register(volwidget, vicious.widgets.volume, " $1%", 2, "Master")
 -- Register buttons
 volbar.widget:buttons(awful.util.table.join(
    awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e alsamixer") end),
-   awful.button({ }, 4, function () awful.util.spawn("amixer -q set Master 2dB+", false) end),
-   awful.button({ }, 5, function () awful.util.spawn("amixer -q set Master 2dB-", false) end)
+   awful.button({ }, 4, function ()
+     awful.util.spawn("amixer -q set Master 2dB+", false)
+     vicious.force({ volbar, volwidget })
+   end),
+   awful.button({ }, 5, function ()
+     awful.util.spawn("amixer -q set Master 2dB-", false)
+     vicious.force({ volbar, volwidget })
+   end)
 )) -- Register assigned buttons
 volwidget:buttons(volbar.widget:buttons())
 -- }}}
