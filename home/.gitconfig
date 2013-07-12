@@ -1,0 +1,9 @@
+[user]
+	name = Sebastian Peters
+	email = sebastian.peters@tib.uni-hannover.de
+[core]
+#	autocrlf = input
+[log]
+	decorate = short
+[color]
+	ui = true
