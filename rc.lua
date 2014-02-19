@@ -317,6 +317,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore, "foobar"),
 
     awful.key({ modkey,           }, "F1", keydoc.display, "Display this help"),
+    awful.key({ modkey,           }, "-", function () awful.layout.arrange(mouse.screen) end),
     
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -376,6 +377,8 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
 --    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey,           }, ".",      function (c) awful.client.incwfact(-0.05) end),
+    awful.key({ modkey,           }, ",",      function (c) awful.client.incwfact( 0.05) end),
     awful.key({ modkey,           }, "t",
         function (c)
             local fhostname = io.popen("hostname")
