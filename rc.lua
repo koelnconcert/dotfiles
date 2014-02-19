@@ -14,6 +14,7 @@ require("revelation")
 require("debian.menu")
 
 runonce = require("runonce")
+local keydoc = require("keydoc")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -258,11 +259,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
+    keydoc.group("Layout manipulation"),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end, "focus next screen"),
+    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end, "focus previous screen"),
+    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto, "jump to urgent client"),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -285,8 +287,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+    awful.key({ modkey, "Control" }, "n", awful.client.restore, "foobar"),
 
+    awful.key({ modkey,           }, "F1", keydoc.display, "Display this help"),
+    
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
@@ -327,7 +331,6 @@ globalkeys = awful.util.table.join(
                   end,
                   awful.util.getdir("cache") .. "/ssh_history")
               end),
-
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
