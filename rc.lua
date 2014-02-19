@@ -89,13 +89,29 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
-  layout = layouts[2]
+  config = {
+    {
+        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
+        layouts = { layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
+    },
+    { 
+        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
+        layouts = { layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3] }
+    }
+  }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, tags.layout)
+    tags[s] = awful.tag(tags.config[s].names, s, tags.config[s].layouts)
 end
+
+awful.tag.setproperty(tags[1][1], "mwfact", 0.75)
+awful.tag.setproperty(tags[2][2], "mwfact", 0.75)
+--awful.tag.seticon("/usr/share/pixmaps/firefox.png", tags[1][1])
+--awful.tag.setproperty(tags[1][1], "icon_only", 1)
+--awful.tag.seticon("/home/peterss/.local/share/icons/windows-logo.png", tags[2][1])
+--awful.tag.seticon("/usr/share/app-install/icons/pidgin.png", tags[2][9])
+
 -- }}}
 
 -- {{{ Menu
@@ -479,12 +495,14 @@ awful.rules.rules = {
                      maximized_horizontal = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][1] } },
+    { rule = { class = "VirtualBox" },
+      properties = { tag = tags[2][1] } },
+    { rule = { class = "Pidgin" },
+      properties = { tag = tags[2][9] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
