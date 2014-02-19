@@ -97,7 +97,7 @@ LP_ENABLE_BZR=1
 
 # Show time of the last prompt display
 # Recommended value is 0
-LP_ENABLE_TIME=0
+LP_ENABLE_TIME=1
 
 # Display the virtualenv that is currently activated, if any
 # Recommended value is 1
@@ -118,7 +118,10 @@ LP_TIME_ANALOG=0
 # recommended value is 0
 # See LP_TITLE_OPEN and LP_TITLE_CLOSE to change escape characters to adapt this
 # feature to your specific terminal.
-LP_ENABLE_TITLE=0
+LP_ENABLE_TITLE=1
+
+#peterss: fix terminal window title, see https://github.com/nojhan/liquidprompt/issues/78
+LP_PS1_PREFIX="\[\e]0;\u@\h: \w\a\]"
 
 # Enable Title for screen and byobu
 LP_ENABLE_SCREEN_TITLE=0
