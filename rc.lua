@@ -467,7 +467,17 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-runonce.run("conky -b")
-runonce.run("glipper")
-runonce.run("pidgin")
-runonce.run("volti")
+autostart = {
+    "conky -b",
+    "glipper",
+    "redshift",
+    "pidgin",
+    "indicator-weather",
+--    "virtualbox-windows",
+    "firefox",
+    "volti"
+}
+
+for i=1, #autostart do
+    runonce.run(autostart[i])
+end
