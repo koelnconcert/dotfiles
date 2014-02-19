@@ -43,7 +43,17 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+
+beautiful.border_width = "1"
+beautiful.border_normal = "#6F6F6F"
+--beautiful.border_focus = "#8FAF9F" -- green
+beautiful.border_focus = "#F18C96" -- orange
+
+--for keydoc
+beautiful.fg_widget_value = "#AECF96"
+beautiful.fg_widget_value_important = "#FF0000"
+beautiful.fg_widget_clock = "#FF5656"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
