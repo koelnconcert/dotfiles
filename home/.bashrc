@@ -104,6 +104,7 @@ add-alias ()
 }
 
 source ~/.homesick/repos/homeshick/homeshick.sh
+source ~/.homesick/repos/homeshick/completions/homeshick-completion.bash
 
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
