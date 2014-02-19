@@ -103,8 +103,10 @@ add-alias ()
    alias $name
 }
 
-source ~/.homesick/repos/homeshick/homeshick.sh
-source ~/.homesick/repos/homeshick/completions/homeshick-completion.bash
+castles=~/.homesick/repos
+source $castles/homeshick/homeshick.sh
+source $castles/homeshick/completions/homeshick-completion.bash
+source $castles/dotfiles/liquidprompt/liquidprompt
 
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
