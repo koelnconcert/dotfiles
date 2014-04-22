@@ -23,8 +23,11 @@ alias ga='git add'
 alias gai='git add -i'
 alias gf='git fetch'
 alias gfa='git fetch --all'
-alias gl='git log --graph --date-order --pretty="format:%H%Cred%d%Creset %Cblue%ai%Creset %Cgreen%an%Creset %s"'
-alias gla='git log --graph --all'
+git_log_format='format:%H%Cred%d%Creset %Cblue%ai%Creset %Cgreen%an%Creset %s'
+alias gl="git log --graph --date-order --pretty='$git_log_format'"
+alias glv='git log --graph --date-order'
+alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
+alias glav='git log --graph --date-order --all'
 
 alias df='df -h'
 
