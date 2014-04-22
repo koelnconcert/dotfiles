@@ -7,3 +7,5 @@
 	decorate = short
 [color]
 	ui = true
+[push]
+	default = simple
