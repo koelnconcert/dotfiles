@@ -28,6 +28,7 @@ alias gl="git log --graph --date-order --pretty='$git_log_format'"
 alias glv='git log --graph --date-order'
 alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
 alias glav='git log --graph --date-order --all'
+alias gff='git merge --ff-only'
 
 alias df='df -h'
 
