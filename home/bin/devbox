@@ -25,5 +25,5 @@ if docker inspect $box >/dev/null 2>&1; then # box exists
     fi
 else
     echo creating new dev box "$box"
-    docker run -it --name $box --hostname $@ $hostname $image
+    docker run -it --name $box --hostname $hostname -v /var/run/docker.sock:/var/run/docker.sock $@ $image
 fi
