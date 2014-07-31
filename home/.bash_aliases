@@ -49,3 +49,5 @@ alias curl_json='curl -H "Accept: application/json"'
 alias acp='apt-cache policy'
 alias acs='apt-cache search'
 
+alias ack='ack-grep'
+
