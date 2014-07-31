@@ -8,6 +8,10 @@ alias m='more'
 alias h='history'
 alias j="jobs -l"
 
+show_aliases_for() {
+  alias | grep $@ | sed "s/^alias //" | sed "s/^\([^=]*\)=\(.*\)/\1\t\2/"| sed "s/['|\']//g" |sort
+}
+
 #git
 alias gci='git commit'
 alias gst='git status --untracked-files=no --short'
@@ -29,6 +33,14 @@ alias glv='git log --graph --date-order'
 alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
 alias glav='git log --graph --date-order --all'
 alias gff='git merge --ff-only'
+alias galias='show_aliases_for git'
+
+#docker
+alias dps="docker ps"
+alias di="docker images"
+dbu() { docker build -t=$1 .;}
+alias dalias='show_aliases_for docker'
+alias dicl='docker rmi $(docker images --no-trunc | grep "^<none>" | awk "{print \$3}")'
 
 alias df='df -h'
 
@@ -36,3 +48,4 @@ alias curl_json='curl -H "Accept: application/json"'
 
 alias acp='apt-cache policy'
 alias acs='apt-cache search'
+
