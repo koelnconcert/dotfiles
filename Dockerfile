@@ -14,6 +14,7 @@ RUN apt-get install -y mbuffer
 RUN apt-get install -y dnsutils
 RUN apt-get install -y jq
 RUN apt-get install -y xml2
+RUN apt-get install -y moreutils
 
 # base config
 RUN echo "ALL	ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers
