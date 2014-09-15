@@ -1,0 +1,20 @@
+# how often to check for mail
+# set to 0 to disable
+# default is every 5 seconds
+check_mail:0
+
+# default linewrap mode
+# a: all
+# l: left
+# r: right
+# s: syslog
+# S: syslog w/o procname
+# o: offset
+# w: wordwrap
+default_linewrap:l
+
+# default scrollback linewrap mode
+# default is yes (do wrap)
+dsblwm:l
+
+
