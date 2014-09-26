@@ -1,0 +1,21 @@
+## example configuration for devbox
+## this file has to be copied to $HOME/.devboxrc
+## all commented out variables document default behaviour
+
+## set default docker image
+##
+#DEFAULT_IMAGE=ubuntu
+DEFAULT_IMAGE=koelnconcert/devbox
+
+## set default shell
+##
+#DEFAULT_SHELL=bash
+
+## set docker executable (could be docker-io)
+##
+#DOCKER_CMD=docker
+
+## container name prefix used to namespace the devboxes 
+##
+#DOCKER_PREFIX=devbox_
+
