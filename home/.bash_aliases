@@ -51,3 +51,4 @@ alias acs='apt-cache search'
 
 alias ack='ack-grep'
 
+alias column-tab="column -s $'\t'"
