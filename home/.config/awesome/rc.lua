@@ -56,8 +56,8 @@ beautiful.fg_widget_value_important = "#FF0000"
 beautiful.fg_widget_clock = "#FF5656"
 
 -- This is used later as the default terminal and editor to run.
---terminal = "x-terminal-emulator"
-terminal = "gnome-terminal --disable-factory"
+terminal = "x-terminal-emulator"
+--terminal = "gnome-terminal --disable-factory"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
