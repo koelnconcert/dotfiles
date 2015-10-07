@@ -142,7 +142,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = awful.widget.textclock("%Y-%m-%d %H:%M")
 
 -- Create a systray
 mysystray = wibox.widget.systray()
@@ -262,8 +262,8 @@ for s = 1, screen.count() do
     end
     right_layout:add(weatherwidget)
     right_layout:add(separator)
---    right_layout:add(mytextclock)
---    right_layout:add(separator)
+    right_layout:add(mytextclock)
+    right_layout:add(separator)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
