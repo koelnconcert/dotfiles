@@ -97,6 +97,10 @@ tags = {
     { 
         names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
         layouts = { layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3] }
+    },
+    { 
+        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
+        layouts = { layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3] }
     }
   }
 }
