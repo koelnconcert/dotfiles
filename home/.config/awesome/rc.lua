@@ -1,11 +1,14 @@
 -- Standard awesome library
-require("awful")
+local awful = require("awful")
 require("awful.autofocus")
-require("awful.rules")
+awful.rules = require("awful.rules")
+-- Widget and layout library
+local wibox = require("wibox")
 -- Theme handling library
-require("beautiful")
+local beautiful = require("beautiful")
 -- Notification library
-require("naughty")
+local naughty = require("naughty")
+
 
 require("vicious")
 require("revelation")
@@ -28,7 +31,7 @@ end
 -- Handle runtime errors after startup
 do
     local in_error = false
-    awesome.add_signal("debug::error", function (err)
+    awesome.connect_signal("debug::error", function (err)
         -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
@@ -133,46 +136,48 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 -- }}}
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" })
+mytextclock = awful.widget.textclock()
 
 -- Create a systray
-mysystray = widget({ type = "systray" })
+mysystray = wibox.widget.systray()
 
 -- {{{ Reusable separator
-separator = widget({ type = "textbox" })
-separator.text = "  "
+separator = wibox.widget.textbox()
+separator:set_text("  ")
 -- }}}
 
 --Create a weather widget
 
 metarid = "eddv"
-weatherwidget = widget({ type = "textbox" })
-weatherwidget.text = awful.util.pread(
+weatherwidget = wibox.widget.textbox()
+weatherwidget:set_text(awful.util.pread(
   "weather " .. metarid .. " --headers=Temperature --quiet -m | awk '{print $2, $3}'"
 ) -- replace METARID with the metar ID for your area. This uses metric. If you prefer Fahrenheit remove the "-m" in "--quiet -m".
+)
 weathertimer = timer(
   { timeout = 900 } -- Update every 15 minutes.
 )
-weathertimer:add_signal(
+weathertimer:connect_signal(
   "timeout", function()
-     weatherwidget.text = awful.util.pread(
+     weatherwidget:set_text(awful.util.pread(
      "weather " .. metarid .. " --headers=Temperature --quiet -m | awk '{print $2, $3}' &"
    ) --replace METARID and remove -m if you want Fahrenheit
+ )
  end)
 
 weathertimer:start() -- Start the timer
-weatherwidget:add_signal(
+weatherwidget:connect_signal(
 "mouse::enter", function()
   weather = naughty.notify(
     {title="Weather",text=awful.util.pread("weather " .. metarid .. " -m")})
   end) -- this creates the hover feature. replace METARID and remove -m if you want Fahrenheit
-weatherwidget:add_signal(
+weatherwidget:connect_signal(
   "mouse::leave", function()
     naughty.destroy(weather)
   end)
@@ -224,7 +229,7 @@ mytasklist.buttons = awful.util.table.join(
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
+    mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -234,29 +239,41 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
-                                          end, mytasklist.buttons)
+    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
-    -- Add widgets to the wibox - order matters
-    mywibox[s].widgets = {
-        {
-            mylauncher,
-            mytaglist[s],
-            mypromptbox[s], separator,
-            layout = awful.widget.layout.horizontal.leftright
-        },
-        mylayoutbox[s], separator,
-        weatherwidget, separator,
-        s == 1 and mysystray or nil,
-        separator, mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
-    }
+
+    
+    -- Widgets that are aligned to the left
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(mylauncher)
+    left_layout:add(mytaglist[s])
+    left_layout:add(mypromptbox[s])
+
+    -- Widgets that are aligned to the right
+    local right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then 
+        right_layout:add(mysystray) 
+        right_layout:add(separator)
+    end
+    right_layout:add(weatherwidget)
+    right_layout:add(separator)
+--    right_layout:add(mytextclock)
+--    right_layout:add(separator)
+    right_layout:add(mylayoutbox[s])
+
+    -- Now bring it all together (with the tasklist in the middle)
+    local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
+    layout:set_middle(mytasklist[s])
+    layout:set_right(right_layout)
+
+    mywibox[s]:set_widget(layout)
+
 end
 -- }}}
 
@@ -518,12 +535,12 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.add_signal("manage", function (c, startup)
+client.connect_signal("manage", function (c, startup)
     -- Add a titlebar
     -- awful.titlebar.add(c, { modkey = modkey })
 
     -- Enable sloppy focus
-    c:add_signal("mouse::enter", function(c)
+    c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
             and awful.client.focus.filter(c) then
             client.focus = c
@@ -543,8 +560,8 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
 autostart = {
