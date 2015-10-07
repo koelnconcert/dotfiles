@@ -13,7 +13,7 @@ require("revelation")
 -- Load Debian menu entries
 require("debian.menu")
 
-runonce = require("runonce")
+--runonce = require("runonce")
 local keydoc = require("keydoc")
 
 -- {{{ Error handling
@@ -559,5 +559,5 @@ autostart = {
 }
 
 for i=1, #autostart do
-    runonce.run(autostart[i])
+--    runonce.run(autostart[i])
 end
