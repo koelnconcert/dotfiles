@@ -564,17 +564,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-autostart = {
-    "conky -b",
-    "glipper",
-    "redshift",
-    "pidgin",
-    "indicator-weather",
---    "virtualbox-windows",
-    "firefox",
-    "volti"
-}
-
-for i=1, #autostart do
---    runonce.run(autostart[i])
-end
