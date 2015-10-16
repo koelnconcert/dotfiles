@@ -12,6 +12,7 @@ exec gtk-redshift &
 exec system-config-printer-applet &
 
 # others
+exec dropbox start &
 exec conky &
 autorandr -c
 
