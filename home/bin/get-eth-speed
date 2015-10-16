@@ -1,0 +1,1 @@
+/sbin/ethtool $1 | grep Speed: | cut -d " " -f 2
