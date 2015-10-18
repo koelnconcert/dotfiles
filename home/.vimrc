@@ -1,6 +1,7 @@
 set nocompatible
 set number
 colors zenburn
+syntax enable
 
 set tabstop=2
 set expandtab     "don't use actual tab character (ctrl-v)
