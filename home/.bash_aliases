@@ -34,6 +34,7 @@ alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
 alias glav='git log --graph --date-order --all'
 alias gff='git merge --ff-only'
 alias galias='show_aliases_for git'
+alias gcd='cd `git root`'
 
 #docker
 alias dps="docker ps"
