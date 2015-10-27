@@ -5,6 +5,7 @@
 #	autocrlf = input
 [log]
 	decorate = short
+	date = local
 [color]
 	ui = true
 [push]
