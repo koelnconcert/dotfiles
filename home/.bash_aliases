@@ -20,7 +20,7 @@ alias gstr='find -type d -name .git -printf "==> %h\n" -execdir git status --sho
 alias gstra='find -type d -name .git -printf "==> %h\n" -execdir git status --short \;'
 alias gls='git ls-files --directory'
 alias gco='git checkout'
-alias gbr='git branch'
+alias gbr='git branch -vv'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias ga='git add'
