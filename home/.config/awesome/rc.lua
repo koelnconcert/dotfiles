@@ -332,6 +332,30 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F1", keydoc.display, "Display this help"),
     awful.key({ modkey,           }, "-", function () awful.layout.arrange(mouse.screen) end),
     
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight +10", false) end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -10", false) end),
+
+    -- Multimedia
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+        awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end),
+    awful.key({ }, "XF86AudioMicMute", function ()
+        awful.util.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle", false) end),
+
+    -- Screenshots
+    awful.key({ }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter", false) end),
+    awful.key({ "Control" }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter -w", false) end),
+    awful.key({ "Shift" }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter -f", false) end),
+
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
