@@ -55,3 +55,5 @@ alias ack='ack-grep'
 alias column-tab="column -s $'\t'"
 
 alias ncdu='ncdu --exclude .snapshots'
+
+alias agl='ag --pager "less -R"'
