@@ -57,3 +57,6 @@ alias column-tab="column -s $'\t'"
 alias ncdu='ncdu --exclude .snapshots'
 
 alias agl='ag --pager "less -R"'
+find_files_for_ag() { find -name ".git" -prune -o -name ".svn" -prune -o -print; }
+alias agf='find_files_for_ag | ag'
+alias agfl='find_files_for_ag | agl'
