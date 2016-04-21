@@ -1,0 +1,2 @@
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'ctrl-f': 'find-and-replace:show'
