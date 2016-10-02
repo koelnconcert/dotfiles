@@ -5,12 +5,12 @@ Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
-Package: koelnconcert-console-tools
+Package: koelnconcert-system-tools
 Version: 1
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
-Recommends: curl, git, git-hub, git-extras, htop, jq, mc, mlocate, multitail, mutt, ncdu, mbuffer, orpie, pv, pmount, sshfs, tig, tofrodos, tree, vim, w3m, xml2, wget
+Recommends: apt-listbugs, apt-listchanges, aptitude, etckeeper
 Suggests: equivs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
@@ -21,4 +21,4 @@ Suggests: equivs
 # Extra-Files: <comma-separated list of additional files for the doc directory>
 # Files: <pair of space-separated paths; First is file to include, second is destination>
 #  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: dependency package for some some useful console tools
+Description: dependency package for some some useful system tools
