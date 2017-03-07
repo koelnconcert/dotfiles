@@ -41,7 +41,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
+beautiful.init(awful.util.get_themes_dir() .. "zenburn/theme.lua")
+
+beautiful.border_width = "1"
+beautiful.border_normal = "#6F6F6F"
+beautiful.border_focus = "#F18C96"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
