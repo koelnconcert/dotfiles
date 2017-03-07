@@ -6,11 +6,11 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-awesome-config
-Version: 2
+Version: 3
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 Depends: awesome, awesome-extra, mate-terminal
-Recommends: conky, fdpowermon, glipper, gtk-redshift, pasystray, suckless-tools, system-config-printer-applet, xss-lock
+Recommends: conky, ethtool, fdpowermon, glipper, gtk-redshift, fonts-hack-ttf, pasystray, suckless-tools, system-config-printer-applet, xss-lock
 Suggests: equivs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

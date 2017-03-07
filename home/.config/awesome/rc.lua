@@ -83,29 +83,16 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {
-  config = {
-    {
-        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
-        layouts = { layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
-    },
-    { 
-        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
-        layouts = { layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3] }
-    },
-    { 
-        names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 },
-        layouts = { layouts[2], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3] }
-    }
-  }
-}
+tags = { }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.config[s].names, s, tags.config[s].layouts)
+    local names = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+    local layouts = { layouts[3], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[1], layouts[2] }
+    tags[s] = awful.tag(names, s, layouts)
+    awful.tag.setproperty(tags[s][1], "mwfact", 0.75)
 end
 
-awful.tag.setproperty(tags[1][1], "mwfact", 0.75)
-awful.tag.setproperty(tags[2][2], "mwfact", 0.75)
+--awful.tag.setproperty(tags[2][2], "mwfact", 0.75)
 --awful.tag.seticon("/usr/share/pixmaps/firefox.png", tags[1][1])
 --awful.tag.setproperty(tags[1][1], "icon_only", 1)
 --awful.tag.seticon("/home/peterss/.local/share/icons/windows-logo.png", tags[2][1])
@@ -269,6 +256,7 @@ for s = 1, screen.count() do
 end
 -- }}}
 
+-- space for conky
 mystatusbar = awful.wibox({ position = "bottom", screen = 1, ontop = false, width = 1, height = 16 })
 
 -- {{{ Mouse bindings
@@ -413,7 +401,7 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
---    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey,           }, "z",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, ".",      function (c) awful.client.incwfact(-0.05) end),
     awful.key({ modkey,           }, ",",      function (c) awful.client.incwfact( 0.05) end),
     awful.key({ modkey,           }, "t",
@@ -539,10 +527,10 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][1] } },
-    { rule = { class = "VirtualBox" },
-      properties = { tag = tags[2][1] } },
-    { rule = { class = "Pidgin" },
-      properties = { tag = tags[2][9] } },
+   -- { rule = { class = "VirtualBox" },
+   --   properties = { tag = tags[2][1] } },
+   -- { rule = { class = "Pidgin" },
+   --   properties = { tag = tags[2][9] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
