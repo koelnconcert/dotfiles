@@ -238,6 +238,15 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+-- {{{ space for conky
+    -- HACK: wibox is visible and on top of conky but very small in the middle
+    -- * width<16 not working
+    -- * opacity not working
+    -- * ontop=false not working
+    -- with awesome 3.5 is was possible to use a really transparent wibox
+    mystatusbar = awful.wibar({ position = "bottom", width = 16, height = 16, bg = beautiful.bg_focus})
+-- }}}
+
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
