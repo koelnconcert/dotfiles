@@ -48,7 +48,7 @@ beautiful.border_normal = "#6F6F6F"
 beautiful.border_focus = "#F18C96"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "mate-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -407,8 +407,50 @@ clientkeys = awful.util.table.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+    awful.key({ modkey,           }, "z",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
+    awful.key({ modkey,           }, "t",
+        function (c)
+            local fhostname = io.popen("hostname")
+            local local_hostname = fhostname:read("*line")
+            fhostname:close()
+
+            if string.find(c.name, "^mc ") ~= nil then -- midnight commander
+              _, _, user, hostname, dir = string.find(c.name, "^mc %[(%w+)@(%w+)%]:(.+)$")
+            elseif string.find(c.name, "^%d+:%d+:%d+ ") ~= nil then -- liquidprompt with time
+              naughty.notify({text = "foobar"})
+              if string.find(c.name, "@") then
+                  _, _, user, hostname, dir = string.find(c.name, "^%d+:%d+:%d+ %[(%w+)@(%w+):(.+)%]")
+              else
+                  _, _, user, dir = string.find(c.name, "^%d+:%d+:%d+ %[(%w+):(.+)%]")
+                  hostname = local_hostname
+              end
+            else -- normal shell
+              _, _, user, hostname, dir = string.find(c.name, "^(%w+)@(%w+): (.+)$")
+            end
+
+            local local_user = os.getenv("USER")
+            local home = os.getenv("HOME")
+            local cmd
+            naughty.notify({text = hostname})
+            naughty.notify({text = user})
+
+            if hostname ~= local_hostname then
+                naughty.notify({text = "foreign hosts not (yet) supported"})
+                return
+            elseif user ~= local_user then
+                local sudo_prompt = "[sudo] password for %p to access %U@%h:" .. dir .. ": "
+                local sudo_cmd = "sh -c 'cd " .. dir .. "; bash'"
+                cmd = string.format("%s -e \"sudo -u %s -p '%s' -s -- %s\"", terminal, user, sudo_prompt, sudo_cmd)
+            else
+                dir = dir:gsub("^~", home)
+                cmd = terminal .. " --working-directory " .. dir
+            end
+
+            naughty.notify({text = cmd})
+            awful.util.spawn(cmd)
+        end,
+        {description = "open terminal in same directory", group = "launcher"}),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
