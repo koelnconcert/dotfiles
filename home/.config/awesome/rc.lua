@@ -358,7 +358,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "s",
               function ()
                   awful.prompt.run({ prompt = "ssh: " },
-                  mypromptbox[mouse.screen].widget,
+                  mouse.screen.mypromptbox.widget,
                   function(h) awful.util.spawn(terminal .. ' -e "ssh ' .. h .. '"') end,
                   function(cmd, cur_pos, ncomp)
                       -- get hosts and hostnames
@@ -391,7 +391,8 @@ globalkeys = awful.util.table.join(
                       return matches[ncomp], #matches[ncomp] + 1
                   end,
                   awful.util.getdir("cache") .. "/ssh_history")
-              end),
+              end,
+              {description = "open ssh connection", group = "launcher"}),
     -- Brightness
     awful.key({ }, "XF86MonBrightnessUp", function ()
         awful.util.spawn("xbacklight +10", false) end,
