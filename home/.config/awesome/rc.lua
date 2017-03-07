@@ -353,7 +353,43 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight +10", false) end,
+        {description = "backlight +10", group = "fn keys"}),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -10", false) end,
+        {description = "backlight -10", group = "fn keys"}),
+
+    -- Multimedia
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%", false) end,
+        {description = "volume +10%", group = "fn keys"}),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%", false) end,
+        {description = "volume -10%", group = "fn keys"}),
+    awful.key({ }, "XF86AudioMute", function ()
+        awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
+        {description = "toggle mute", group = "fn keys"}),
+    awful.key({ }, "XF86AudioMicMute", function ()
+        awful.util.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle", false) end,
+        {description = "toggle mic", group = "fn keys"}),
+
+    -- Screenshots
+    awful.key({ }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter", false) end,
+        {description = "screenshooter dialog", group = "screenshot"}),
+    awful.key({ "Control" }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter -w", false) end,
+        {description = "screenshot of current client", group = "screenshot"}),
+    awful.key({ "Shift" }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter -r", false) end,
+        {description = "screenshot of a region", group = "screenshot"}),
+    awful.key({ "Control", "Shift" }, "Print", function ()
+        awful.util.spawn("xfce4-screenshooter -f", false) end,
+        {description = "screenshot of all screens", group = "screenshot"})
 )
 
 clientkeys = awful.util.table.join(
