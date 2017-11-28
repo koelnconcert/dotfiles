@@ -13,26 +13,26 @@ show_aliases_for() {
 }
 
 #git
+git_log_format='format:%C(auto)%h %Cblue%ad%Creset%C(auto)%d %Cgreen%an%Creset %s'
 alias gci='git commit'
 alias gst='git status --untracked-files=no --short'
 alias gsta='git status --short'
-alias gstr='find -type d -name .git -printf "==> %h\n" -execdir git status --short --untracked-files=no \;'
-alias gstra='find -type d -name .git -printf "==> %h\n" -execdir git status --short \;'
+alias gstr='git recursive branch-status | less -S -R'
+alias grr='git recursive --label=lines remote-status | grep -v = | column -t'
+alias grra='git recursive --label=lines remote-status | column -t'
 alias gls='git ls-files --directory'
 alias gco='git checkout'
 alias gbr='git branch -vv'
 alias gd='git diff'
 alias gds='git diff --staged'
-alias ga='git add'
 alias gai='git add -i'
 alias gf='git fetch'
 alias gfa='git fetch --all'
-git_log_format='format:%C(auto)%h %Cblue%ad%Creset%C(auto)%d %Cgreen%an%Creset %s'
+alias gfr='git recursive fetch --all'
 alias gl="git log --graph --date-order --pretty='$git_log_format'"
-alias glv='git log --graph --date-order'
 alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
-alias glav='git log --graph --date-order --all'
 alias gff='git merge --ff-only'
+alias gffr='git recursive merge --ff-only'
 alias galias='show_aliases_for git'
 alias gcd='cd `git root`'
 alias tiga='tig --all'
@@ -50,8 +50,6 @@ alias curl_json='curl -H "Accept: application/json"'
 
 alias acp='apt-cache policy'
 alias acs='apt-cache search'
-
-alias ack='ack-grep'
 
 alias column-tab="column -s $'\t'"
 
