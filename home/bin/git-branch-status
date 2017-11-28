@@ -1,0 +1,6 @@
+#!/bin/bash
+ls .git/index.lock 2>/dev/null | grep --color=always "index.lock"
+ls .git/svn 2>/dev/null | grep --color=always "svn"
+git branch -vv | egrep --color=always "[0-9]+ (hinterher|voraus)|$"
+git stash list | cat
+git status --short

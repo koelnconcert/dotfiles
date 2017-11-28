@@ -1,0 +1,18 @@
+#!/bin/bash
+#find -type d -name .git -printf "\n==> %h\n" -execdir git "$@" \;
+
+label="top"
+if [[ $1 = --label=* ]]; then
+  label=${1#*=}
+  shift
+fi
+
+find -type d -name .git -print0 | sort -z | while read -d $'\0' gitdir; do
+  dir=$(dirname $gitdir)
+  [ "$label" = "lines" ] && prepend="$dir "
+  [ "$label" = "top" ] && echo -e "\n==> $dir"
+  (
+    cd $dir
+    git "$@"
+  ) | sed "s|^|$prepend|"
+done

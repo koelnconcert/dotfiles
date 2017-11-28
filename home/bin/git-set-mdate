@@ -1,0 +1,8 @@
+#!/bin/bash
+for FILE in $@; do
+    TIME=$(git log --pretty=format:%cd -n 1 --date=iso $FILE)
+    if [ $? -eq 0 ]; then
+      touch -m -d "$TIME" $FILE
+    fi
+done
+
