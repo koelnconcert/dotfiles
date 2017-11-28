@@ -1,0 +1,1 @@
+aptitude -F '%p %t %O' search '?installed' | grep -v testing

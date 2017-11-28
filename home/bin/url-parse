@@ -1,0 +1,15 @@
+#!/bin/bash
+url=$1
+IFS='?' read -a parts <<< "$url"
+
+base=${parts[0]}
+query=${parts[1]}
+
+IFS='&' read -a params <<< "$query"
+
+echo $base
+
+for param in "${params[@]}"; do
+  echo "  $(urlencode -d $param)"
+done | sort
+

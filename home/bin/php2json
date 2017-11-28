@@ -1,0 +1,6 @@
+#!/usr/bin/php
+<?php
+    $input = file_get_contents("php://stdin");
+    $data = unserialize($input);
+    print json_encode($data);
+?>

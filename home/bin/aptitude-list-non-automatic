@@ -1,0 +1,2 @@
+# -F '%p'
+aptitude $@ search '?and(?installed, !?automatic, !?essential, !?priority(important), !?priority(required))'

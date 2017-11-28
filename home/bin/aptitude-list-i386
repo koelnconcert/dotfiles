@@ -1,0 +1,1 @@
+aptitude --disable-columns -F '%p' search '?architecture(i386) ?installed'
