@@ -9,10 +9,10 @@ fi
 
 find -type d -name .git -print0 | sort -z | while read -d $'\0' gitdir; do
   dir=$(dirname $gitdir)
-  [ "$label" = "lines" ] && prepend="$dir "
-  [ "$label" = "top" ] && echo -e "\n==> $dir"
+  [ "$label" = "lines" ] && sed_label="s|^|$dir |"
+  [ "$label" = "top" ] && sed_label="1 i \\\n==> $dir"
   (
     cd $dir
-    git "$@"
-  ) | sed "s|^|$prepend|"
+    git "$@" 2>&1
+  ) | sed "$sed_label"
 done

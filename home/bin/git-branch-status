@@ -1,6 +1,27 @@
 #!/bin/bash
 ls .git/index.lock 2>/dev/null | grep --color=always "index.lock"
-ls .git/svn 2>/dev/null | grep --color=always "svn"
-git branch -vv | egrep --color=always "[0-9]+ (hinterher|voraus)|$"
+ls -d .git/svn 2>/dev/null | grep --color=always "svn"
+
+git branch -vv | egrep --color=always "[0-9]+ (hinterher|voraus)" #|$"
+
+branch=$(git rev-parse --abbrev-ref @)
+branch_hash=$(git rev-parse @)
+upstream=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+upstream_hash=$(git rev-parse @{u} 2>/dev/null)
+if [ "$branch_hash" != "$upstream_hash" ]; then
+  git_log_format="format:%C(auto)%h %Cblue%ad%Creset%C(auto)%d %Cgreen%an%Creset %s"
+  prepend="$branch..$upstream "
+  max_commits=10
+  (
+    git log -n $max_commits --graph --date-order --pretty="$git_log_format" @..@{u}
+    echo
+    commits=$(git log --oneline @..@{u} | wc -l)
+    if [ "$commits" -gt "$max_commits" ]; then
+      echo "... (showing only $max_commits out of $commits commits)"
+    fi
+  ) | sed "s|^|$prepend|"
+fi
+
 git stash list | cat
+
 git status --short
