@@ -10,7 +10,7 @@ Version: 1
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
-Recommends: curl, git, git-hub, git-extras, htop, jq, mc, mlocate, multitail, mutt, ncdu, mbuffer, orpie, pv, pmount, sshfs, tig, tofrodos, tree, vim, w3m, xml2, wget
+Recommends: curl, git, git-hub, git-extras, git-hub, git-lfs, htop, jq, mc, mlocate, multitail, mutt, ncdu, mbuffer, orpie, pv, pmount, sshfs, silversearcher-ag, tig, tofrodos, tree, vim, w3m, xml2, xmlstarlet, wget
 Suggests: equivs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
