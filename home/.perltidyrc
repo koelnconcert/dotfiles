@@ -1,0 +1,6 @@
+--indent-columns=2 
+--continuation-indentation=4
+--cuddled-else
+--maximum-line-length=0
+--paren-tightness=2
+--no-valign

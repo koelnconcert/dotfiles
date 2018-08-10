@@ -77,6 +77,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# Load stuff from homeshick castles
+castles=~/.homesick/repos
+source $castles/homeshick/homeshick.sh
+source $castles/homeshick/completions/homeshick-completion.bash
+source $castles/dotfiles/liquidprompt/liquidprompt
+source $castles/dotfiles/complete-alias/bash_completion.sh
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -102,11 +109,6 @@ add-alias ()
    eval alias $name=\'$value\'
    alias $name
 }
-
-castles=~/.homesick/repos
-source $castles/homeshick/homeshick.sh
-source $castles/homeshick/completions/homeshick-completion.bash
-source $castles/dotfiles/liquidprompt/liquidprompt
 
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local

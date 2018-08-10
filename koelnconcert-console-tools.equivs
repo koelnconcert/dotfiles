@@ -6,11 +6,11 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-console-tools
-Version: 2
+Version: 3
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
-Recommends: byobu, curl, dlocate, git, git-hub, git-extras, git-hub, git-lfs, htop, jq, libxml2-utils, mc, mlocate, multitail, mutt, ncdu, mbuffer, orpie, p7zip-full, pmount, pssh, pv, renameutils, silversearcher-ag, sshfs, sshuttle, telnet, tidy, tig, tofrodos, tree, vim, w3m, xml2, xmlstarlet, wget
+Recommends: byobu, curl, dlocate, git, git-hub, git-extras, git-hub, git-lfs, htop, jq, libxml2-utils, mc, mlocate, multitail, mutt, ncdu, mbuffer, orpie, perltidy, p7zip-full, pmount, pssh, pv, renameutils, silversearcher-ag, sshfs, sshuttle, telnet, tidy, tig, tofrodos, tree, vim, w3m, xml2, xmlstarlet, wget
 Suggests: equivs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
