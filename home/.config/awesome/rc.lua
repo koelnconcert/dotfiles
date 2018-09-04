@@ -395,11 +395,11 @@ globalkeys = awful.util.table.join(
               {description = "open ssh connection", group = "launcher"}),
     -- Brightness
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("xbacklight +10", false) end,
-        {description = "backlight +10", group = "fn keys"}),
+        awful.util.spawn("brightnessctl s +10%", false) end,
+        {description = "backlight +10%", group = "fn keys"}),
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.util.spawn("xbacklight -10", false) end,
-        {description = "backlight -10", group = "fn keys"}),
+        awful.util.spawn("brightnessctl s 10%-", false) end,
+        {description = "backlight -10%", group = "fn keys"}),
 
     -- Multimedia
     awful.key({ }, "XF86AudioRaiseVolume", function ()
