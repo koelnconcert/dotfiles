@@ -2,10 +2,13 @@ show_aliases_for() {
   alias | grep $@ | sed "s/^alias //" | sed "s/^\([^=]*\)=\(.*\)/\1\t\2/"| sed "s/['|\']//g" |sort
 }
 
+complete_alias() {
+  complete -F _complete_alias "$@"
+}
+
 #
 # bash
 #
-
 alias ll='ls -l'
 alias l='ls -al'
 alias rm='rm -i'
@@ -44,6 +47,7 @@ alias gffr='git recursive merge --ff-only'
 alias gcd='cd `git root`'
 alias tiga='tig --all'
 
+complete_alias gci gco gd gds gf tiga
 #
 # docker
 #
@@ -55,16 +59,19 @@ dbu() { docker build -t=$1 .;}
 alias dicl='docker rmi $(docker images --no-trunc | grep "^<none>" | awk "{print \$3}")'
 
 #
-# kubernetes
+# kubectl
 #
 alias kalias='show_aliases_for kubectl'
 
 alias k='kubectl'
 alias kg='kubectl get'
+alias kga='kubectl get all'
 alias kd='kubectl describe'
 alias kl='kubectl logs'
 alias ka='kubectl apply'
 alias kaf='kubectl apply -f'
+
+complete_alias k kg kga kd kl ka kaf
 
 #
 # other
