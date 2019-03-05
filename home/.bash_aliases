@@ -1,3 +1,11 @@
+show_aliases_for() {
+  alias | grep $@ | sed "s/^alias //" | sed "s/^\([^=]*\)=\(.*\)/\1\t\2/"| sed "s/['|\']//g" |sort
+}
+
+#
+# bash
+#
+
 alias ll='ls -l'
 alias l='ls -al'
 alias rm='rm -i'
@@ -8,11 +16,11 @@ alias m='more'
 alias h='history'
 alias j="jobs -l"
 
-show_aliases_for() {
-  alias | grep $@ | sed "s/^alias //" | sed "s/^\([^=]*\)=\(.*\)/\1\t\2/"| sed "s/['|\']//g" |sort
-}
+#
+# git
+#
+alias galias='show_aliases_for git'
 
-#git
 git_log_format='format:%C(auto)%h %Cblue%ad%Creset%C(auto)%d %Cgreen%an%Creset %s'
 alias gci='git commit'
 alias gst='git status --untracked-files=no --short'
@@ -33,17 +41,34 @@ alias gl="git log --graph --date-order --pretty='$git_log_format'"
 alias gla="git log --graph --date-order --pretty='$git_log_format' --all"
 alias gff='git merge --ff-only'
 alias gffr='git recursive merge --ff-only'
-alias galias='show_aliases_for git'
 alias gcd='cd `git root`'
 alias tiga='tig --all'
 
-#docker
+#
+# docker
+#
+alias dalias='show_aliases_for docker'
+
 alias dps="docker ps"
 alias di="docker images"
 dbu() { docker build -t=$1 .;}
-alias dalias='show_aliases_for docker'
 alias dicl='docker rmi $(docker images --no-trunc | grep "^<none>" | awk "{print \$3}")'
 
+#
+# kubernetes
+#
+alias kalias='show_aliases_for kubectl'
+
+alias k='kubectl'
+alias kg='kubectl get'
+alias kd='kubectl describe'
+alias kl='kubectl logs'
+alias ka='kubectl apply'
+alias kaf='kubectl apply -f'
+
+#
+# other
+#
 alias df='df -h'
 
 alias curl_json='curl -H "Accept: application/json"'
@@ -54,6 +79,8 @@ alias acs='apt-cache search'
 alias column-tab="column -s $'\t'"
 
 alias ncdu='ncdu --exclude .snapshots'
+
+alias no-network='firejail --noprofile --net=none'
 
 alias agl='ag --pager "less -R"'
 agf() { ag -g $@ | ag $1 ; }
