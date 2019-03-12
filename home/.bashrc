@@ -69,9 +69,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -100,6 +97,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+[ -x /usr/bin/kubectl ] && source <(/usr/bin/kubectl completion bash)
+[ -x /usr/bin/minikube ] && source <(/usr/bin/minikube completion bash)
+[ -r ~/src/koelnconcert/devbox/bash_completion ] && source ~/src/koelnconcert/devbox/bash_completion
+
 # Function which adds an alias to the current shell and to
 # the ~/.bash_aliases file.
 add-alias ()
@@ -109,6 +110,8 @@ add-alias ()
    eval alias $name=\'$value\'
    alias $name
 }
+
+export ATOM_REPOS_HOME="$HOME/src/atom"
 
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local

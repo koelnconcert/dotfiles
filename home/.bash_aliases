@@ -100,3 +100,5 @@ alias no-network='firejail --noprofile --net=none'
 alias agl='ag --pager "less -R"'
 agf() { ag -g $@ | ag $1 ; }
 agfl() { ag -g $@ | agl $1 ; }
+
+alias ssh-with-git='GIT_AUTHOR_NAME="$(git config --global --get user.name)" GIT_AUTHOR_EMAIL="$(git config --global --get user.email)" GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME" GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL" ssh'
