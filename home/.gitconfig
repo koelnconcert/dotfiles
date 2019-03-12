@@ -12,7 +12,7 @@
 [push]
 	default = simple
 [core]
-	pager = less -S
+ 	pager = diff-so-fancy | less --tabs=4 -RFX
 [svn]
 	rmdir = true
 [filter "lfs"]
