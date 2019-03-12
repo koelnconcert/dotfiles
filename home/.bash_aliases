@@ -7,6 +7,14 @@ complete_alias() {
 }
 
 #
+# allow alias expansion for some 'prefix' commands
+#
+alias watch="watch "
+alias grc="grc "
+alias time="time "
+alias annotate-output="annotate-output "
+
+#
 # bash
 #
 alias ll='ls -l'
