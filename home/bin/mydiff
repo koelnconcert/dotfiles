@@ -1,0 +1,1 @@
+colordiff $* | diff-so-fancy | less -R
