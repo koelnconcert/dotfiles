@@ -1,0 +1,7 @@
+#!/bin/bash
+find -name "*.equivs" -fprint /dev/stderr -execdir equivs-build {} \; > /dev/null
+echo
+packages=$(find -name "*.deb" \
+  | sort -V | tac | rev | tr "_" " " | uniq -f 2 | tr " " "_" | rev)
+sudo apt install $@ $packages
+
