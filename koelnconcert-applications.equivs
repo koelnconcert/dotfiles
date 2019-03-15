@@ -5,13 +5,13 @@ Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
-Package: koelnconcert-awesome-config
-Version: 9
+Package: koelnconcert-applications
+Version: 1
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
-Depends: awesome, awesome-extra, mate-terminal
-Recommends: arandr, brightnessctl, clipit, conky, dconf-cli, eom, ethtool, fdpowermon, redshift-gtk, fonts-hack-ttf, meld, mousepad, network-manager-gnome, pasystray, pavucontrol, suckless-tools, system-config-printer-applet, xfce4-screenshooter, xsel, xss-lock
-Suggests: equivs, xorg, slim
+# Depends: 
+Recommends: bless, chromium-l10n, diffpdf, firefox-l10n-de, freecad, keepass2, libreoffice-calc, libreoffice-impress, libreoffice-writer, nomacs, pidgin, qonk, scid, sweethome3d, vlc-l10n, wireshark-gtk, zathura
+Suggests: equivs, xorg
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 # Architecture: all
@@ -21,4 +21,4 @@ Suggests: equivs, xorg, slim
 # Extra-Files: <comma-separated list of additional files for the doc directory>
 # Files: <pair of space-separated paths; First is file to include, second is destination>
 #  <more pairs, if there's more than one file to include. Notice the starting space>
-Description: dependency package for tools required by my awesome config 
+Description: list of gui applications
