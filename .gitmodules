@@ -1,0 +1,3 @@
+[submodule "autorandr"]
+	path = autorandr
+	url = https://github.com/wertarbyte/autorandr.git
