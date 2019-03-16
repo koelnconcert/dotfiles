@@ -6,11 +6,11 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-applications
-Version: 1
+Version: 2
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: 
-Recommends: bless, chromium-l10n, diffpdf, firefox-l10n-de, freecad, keepass2, libreoffice-calc, libreoffice-impress, libreoffice-writer, nomacs, pidgin, qonk, scid, sweethome3d, vlc-l10n, wireshark-gtk, zathura
+Recommends: bless, chromium-l10n, diffpdf, firefox-l10n-de, freecad, keepass2, libreoffice-calc, libreoffice-impress, libreoffice-writer, nomacs, pidgin, pinta, qonk, scid, sweethome3d, vlc-l10n, wireshark-gtk, zathura
 Suggests: equivs, xorg
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
