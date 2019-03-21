@@ -81,6 +81,8 @@ source $castles/homeshick/completions/homeshick-completion.bash
 source $castles/dotfiles/liquidprompt/liquidprompt
 source $castles/dotfiles/complete-alias/bash_completion.sh
 
+[[ -d ~/.local/bin ]] && PATH=$PATH:~/.local/bin
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
