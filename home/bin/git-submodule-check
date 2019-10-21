@@ -1,0 +1,11 @@
+#!/bin/bash
+read -r -d '' SCRIPT <<- "EOF"
+gitdir=$(cat .git | cut -d" " -f 2-)
+if test $(find $gitdir/FETCH_HEAD -mtime +1 -print); then
+  git fetch
+fi
+tput setaf 6
+git find-newer-version
+tput sgr0
+EOF
+git submodule foreach "$SCRIPT"

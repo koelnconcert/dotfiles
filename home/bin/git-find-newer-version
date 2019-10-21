@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+current=$(git describe --tags 2>/dev/null)
+newest=$(git describe --tags $(git rev-list --tags --max-count=1) 2>/dev/null)
+if [[ -z $newest ]]; then
+  current=$(git rev-parse HEAD)
+  newest=$(git rev-list --remotes --max-count=1)
+fi  
+if [[ $current != $newest ]]; then 
+  echo "$current -> $newest"
+fi

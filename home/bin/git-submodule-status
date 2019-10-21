@@ -1,0 +1,4 @@
+# better git submodule:
+# - `git describe --tags` too allow also non-annotated tags to show up
+# - get rid of sha (tag is enough)
+git submodule --quiet foreach 'echo "$displaypath ($(git describe --tags --always))"'
