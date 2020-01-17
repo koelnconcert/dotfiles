@@ -101,6 +101,7 @@ fi
 
 [ -x /usr/bin/kubectl ] && source <(/usr/bin/kubectl completion bash)
 [ -x /usr/bin/minikube ] && source <(/usr/bin/minikube completion bash)
+command -v helm > /dev/null && source <(helm completion bash)
 [ -r ~/src/koelnconcert/devbox/bash_completion ] && source ~/src/koelnconcert/devbox/bash_completion
 
 # Function which adds an alias to the current shell and to
@@ -115,7 +116,10 @@ add-alias ()
 
 export ATOM_REPOS_HOME="$HOME/src/atom"
 
+[ -n "$DISPLAY" ] && xset b off
+
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
+
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
-
