@@ -13,6 +13,7 @@
 	default = simple
 [core]
  	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = vim
 [svn]
 	rmdir = true
 [filter "lfs"]
