@@ -13,6 +13,7 @@
     disabledPackages: [
       "atomic-emacs"
       "emacs-mode"
+      "linter"
     ]
     ignoredNames: [
       ".git"
@@ -34,7 +35,7 @@
     useReactEditor: true
   editor:
     fontFamily: "Fira Code"
-    fontSize: 16
+    fontSize: 15
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -51,6 +52,8 @@
   "fold-navigator":
     indentationCharacter: " "
     keepFolding: true
+  "git-blame":
+    columnWidth: 365
   linter: {}
   "linter-perl": {}
   "linter-shellcheck": {}
@@ -60,6 +63,8 @@
     userId: "a9573f0849f7610c9b0ce40b1e4147d868fb1923"
   minimap:
     plugins:
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
       "git-diff": true
       "git-diffDecorationsZIndex": 0
       "highlight-selected": true
@@ -72,7 +77,11 @@
     core: {}
   "release-notes":
     viewedVersion: "0.96.0-e3dbd41"
-  "spell-check": {}
+  "spell-check":
+    locales: [
+      "de-DE"
+      "en-US"
+    ]
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
