@@ -36,7 +36,7 @@ git_log_format='format:%C(auto)%h %Cblue%ad%Creset%C(auto)%d %Cgreen%an%Creset %
 alias gci='git commit'
 alias gst='git status --untracked-files=no --short'
 alias gsta='git status --short'
-alias gstr='git recursive branch-status | less -S -R'
+alias gstr='git recursive branch-status | less -F -X -S -R'
 alias grr='git recursive --label=lines remote-status | grep -v = | column -t'
 alias grra='git recursive --label=lines remote-status | column -t'
 alias gls='git ls-files --directory'
@@ -71,6 +71,7 @@ alias dicl='docker rmi $(docker images --no-trunc | grep "^<none>" | awk "{print
 #
 alias kalias='show_aliases_for kubectl'
 
+alias wk='watch-kubectl'
 alias k='kubectl'
 alias kg='kubectl get'
 alias kga='kubectl get all'
