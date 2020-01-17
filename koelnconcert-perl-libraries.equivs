@@ -6,11 +6,11 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-perl-libraries
-Version: 4
+Version: 5
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
-Recommends: libclass-inspector-perl, liblocal-lib-perl, libmce-perl, libnumber-bytes-human-perl, libsysadm-install-perl, libtext-unidecode-perl, libtime-duration-perl
+Recommends: libclass-inspector-perl, liblocal-lib-perl, libmce-perl, libnumber-bytes-human-perl, libsysadm-install-perl, libtext-unidecode-perl, libtime-duration-perl, perl-doc
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
