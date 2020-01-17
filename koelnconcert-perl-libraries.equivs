@@ -5,8 +5,8 @@ Section: misc
 Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
-Package: koelneoncert-perl-libraries
-Version: 3
+Package: koelnconcert-perl-libraries
+Version: 4
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
