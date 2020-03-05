@@ -74,6 +74,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# helper functions
+source-if() {
+  [[ -f $1 ]] && source "$1" || true
+}
+
 # Load stuff from homeshick castles
 castles=~/.homesick/repos
 source $castles/homeshick/homeshick.sh
@@ -88,21 +93,19 @@ source $castles/dotfiles/complete-alias/bash_completion.sh
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+source-if ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
+! shopt -oq posix && source-if /etc/bash_completion
 
 [ -x /usr/bin/kubectl ] && source <(/usr/bin/kubectl completion bash)
 [ -x /usr/bin/minikube ] && source <(/usr/bin/minikube completion bash)
 command -v helm > /dev/null && source <(helm completion bash)
-[ -r ~/src/koelnconcert/devbox/bash_completion ] && source ~/src/koelnconcert/devbox/bash_completion
+command -v avp > /dev/null && source <(avp completion)
+
+source-if ~/src/koelnconcert/devbox/bash_completion
 
 # Function which adds an alias to the current shell and to
 # the ~/.bash_aliases file.
@@ -120,6 +123,4 @@ export ATOM_REPOS_HOME="$HOME/src/atom"
 
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
-fi
+source-if ~/.bash_local
