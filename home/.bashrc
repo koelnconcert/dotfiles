@@ -123,4 +123,7 @@ export ATOM_REPOS_HOME="$HOME/src/atom"
 
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
+source-if /usr/share/doc/fzf/examples/key-bindings.bash
+source-if /usr/share/doc/fzf/examples/completion.bash
+
 source-if ~/.bash_local
