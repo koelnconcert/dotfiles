@@ -126,4 +126,10 @@ export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 source-if /usr/share/doc/fzf/examples/key-bindings.bash
 source-if /usr/share/doc/fzf/examples/completion.bash
 
+if command -v fdfind > /dev/null; then
+  export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git --color=always'
+  export FZF_DEFAULT_OPTS="--ansi"
+  export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude .git'
+fi
+
 source-if ~/.bash_local

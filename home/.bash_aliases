@@ -87,6 +87,8 @@ complete_alias k kg kga kd kl ka kaf
 #
 alias df='df -h'
 
+alias fd='fdfind'
+
 alias curl_json='curl -H "Accept: application/json"'
 
 alias acp='apt-cache policy'
