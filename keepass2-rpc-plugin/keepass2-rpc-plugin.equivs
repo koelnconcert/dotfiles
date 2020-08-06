@@ -6,7 +6,7 @@ Priority: optional
 Homepage: https://github.com/kee-org/keepassrpc
 Standards-Version: 3.9.2
 Package: keepass2-rpc-plugin
-Version: 1.8.0-2
+Version: 1.13.0-1
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 Depends: keepass2, mono-mcs, libmono-system-management4.0-cil
