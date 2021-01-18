@@ -8,7 +8,6 @@ exec nm-applet &
 exec pasystray &
 exec clipit &
 exec fdpowermon &
-exec gtk-redshift &
 exec system-config-printer-applet &
 
 # others
