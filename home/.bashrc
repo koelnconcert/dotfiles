@@ -132,7 +132,7 @@ source-if /usr/share/doc/fzf/examples/completion.bash
 if command -v fdfind > /dev/null; then
   export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git --color=always'
   export FZF_DEFAULT_OPTS="--ansi"
-  export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude .git'
+  export FZF_ALT_C_COMMAND='fdfind --type d --follow --exclude .git --exclude dosdevices'
 fi
 
 source-if ~/.bash_local
