@@ -76,7 +76,6 @@ alias k='kubectl'
 alias kg='kubectl get'
 alias kga='kubectl get all'
 alias kd='kubectl describe'
-alias kl='kubectl logs'
 alias ka='kubectl apply'
 alias kaf='kubectl apply -f'
 
