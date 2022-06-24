@@ -16,6 +16,8 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+HISTTIMEFORMAT="%F %T "
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -102,6 +104,7 @@ source-if ~/.bash_aliases
 
 [ -x /usr/bin/kubectl ] && source <(/usr/bin/kubectl completion bash)
 [ -x /usr/bin/minikube ] && source <(/usr/bin/minikube completion bash)
+
 command -v helm > /dev/null && source <(helm completion bash)
 command -v avp > /dev/null && source <(avp completion)
 
