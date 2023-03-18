@@ -403,11 +403,11 @@ globalkeys = awful.util.table.join(
 
     -- Multimedia
     awful.key({ }, "XF86AudioRaiseVolume", function ()
-        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +10%", false) end,
-        {description = "volume +10%", group = "fn keys"}),
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%", false) end,
+        {description = "volume +5%", group = "fn keys"}),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -10%", false) end,
-        {description = "volume -10%", group = "fn keys"}),
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%", false) end,
+        {description = "volume -5%", group = "fn keys"}),
     awful.key({ }, "XF86AudioMute", function ()
         awful.util.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle", false) end,
         {description = "toggle mute", group = "fn keys"}),
@@ -614,8 +614,8 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 
-    { rule = { class = "Pidgin" },
-      properties = { screen = 3, tag = "9" } },
+    --{ rule = { class = "Pidgin" },
+    --  properties = { screen = 3, tag = "9" } },
 }
 -- }}}
 

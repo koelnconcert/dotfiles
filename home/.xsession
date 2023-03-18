@@ -6,7 +6,7 @@ exec xss-lock slock &
 # systray
 exec nm-applet &
 exec pasystray &
-exec clipit &
+exec diodon &
 exec fdpowermon &
 exec system-config-printer-applet &
 
