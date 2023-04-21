@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd "$HOME/debs"
+
+echo "Build equivs packages in ~/debs"
+
+for I in *.equivs; do 
+  equivs-build $I
+done
