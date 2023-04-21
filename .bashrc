@@ -81,11 +81,8 @@ source-if() {
   [[ -f $1 ]] && source "$1" || true
 }
 
-# Load stuff from homeshick castles
-castles=~/.homesick/repos
-source $castles/homeshick/homeshick.sh
-source $castles/homeshick/completions/homeshick-completion.bash
-source $castles/dotfiles/complete-alias/complete_alias
+# Load stuff from submodules
+source ~/.local/share/complete-alias/complete_alias
 
 source-if /usr/share/liquidprompt/liquidprompt
 
