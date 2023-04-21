@@ -1,9 +1,16 @@
 #!/bin/sh
+DEBS=debs
 
-cd "$HOME/debs"
+cd "$HOME/$DEBS"
 
-echo "Build equivs packages in ~/debs"
+echo "Build equivs packages in ~/$DEBS"
 
 for I in *.equivs; do 
   equivs-build $I
 done
+
+echo "List built equivs packages"
+
+ls -l *.deb
+
+echo "Install packages you want via 'sudo apt install ~/$DEBS/{{package}}.deb'"
