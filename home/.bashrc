@@ -85,7 +85,7 @@ source-if() {
 castles=~/.homesick/repos
 source $castles/homeshick/homeshick.sh
 source $castles/homeshick/completions/homeshick-completion.bash
-source $castles/dotfiles/complete-alias/bash_completion.sh
+source $castles/dotfiles/complete-alias/complete_alias
 
 source-if /usr/share/liquidprompt/liquidprompt
 
