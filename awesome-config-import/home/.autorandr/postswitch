@@ -1,0 +1,2 @@
+echo "awesome.restart()"  | awesome-client 2> /dev/null
+killall -SIGUSR1 conky

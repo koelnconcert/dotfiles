@@ -1,0 +1,8 @@
+set recolor true
+set page-padding 5
+set window-title-basename "true"
+
+set highlight-color "#8FAF9F"
+set highlight-active-color "#F8F893"
+set recolor-darkcolor "#DCDCCC"
+set recolor-lightcolor "#3F3F3F"
