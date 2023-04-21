@@ -1,5 +1,0 @@
-'atom-text-editor.vim-mode-plus:not(.insert-mode)':
-  'ctrl-f': 'find-and-replace:show'
-
-'atom-text-editor':
-  'ctrl-alt-b': 'atom-beautify:beautify-editor'

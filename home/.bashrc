@@ -122,8 +122,6 @@ add-alias ()
    alias $name
 }
 
-export ATOM_REPOS_HOME="$HOME/src/atom"
-
 [ -n "$DISPLAY" ] && xset b off
 
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
