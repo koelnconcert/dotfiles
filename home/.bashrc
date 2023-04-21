@@ -85,8 +85,9 @@ source-if() {
 castles=~/.homesick/repos
 source $castles/homeshick/homeshick.sh
 source $castles/homeshick/completions/homeshick-completion.bash
-source $castles/dotfiles/liquidprompt/liquidprompt
 source $castles/dotfiles/complete-alias/bash_completion.sh
+
+source-if /usr/share/liquidprompt/liquidprompt
 
 [[ -d ~/.local/bin ]] && PATH=$PATH:~/.local/bin
 [[ -d /snap/bin ]] && PATH=$PATH:/snap/bin
