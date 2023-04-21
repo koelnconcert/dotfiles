@@ -89,6 +89,7 @@ source $castles/dotfiles/liquidprompt/liquidprompt
 source $castles/dotfiles/complete-alias/bash_completion.sh
 
 [[ -d ~/.local/bin ]] && PATH=$PATH:~/.local/bin
+[[ -d /snap/bin ]] && PATH=$PATH:/snap/bin
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
