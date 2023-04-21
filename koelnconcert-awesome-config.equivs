@@ -6,11 +6,11 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-awesome-config
-Version: 11
+Version: 12
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 Depends: awesome, awesome-extra, mate-terminal
-Recommends: arandr, brightnessctl, clipit, conky, dconf-cli, eom, ethtool, fdpowermon, redshift-gtk, fonts-firacode, fonts-hack-ttf, meld, mousepad, nautilus-dropbox, network-manager-gnome, pasystray, pavucontrol, plymouth, plymouth-themes, suckless-tools, system-config-printer, unifont, x2x, xfce4-screenshooter, xdotool, xsel, xss-lock
+Recommends: arandr, autorandr, brightnessctl, clipit, conky, dconf-cli, eom, ethtool, fdpowermon, redshift-gtk, fonts-firacode, fonts-hack-ttf, meld, mousepad, nautilus-dropbox, network-manager-gnome, pasystray, pavucontrol, plymouth, plymouth-themes, suckless-tools, system-config-printer, unifont, x2x, xfce4-screenshooter, xdotool, xsel, xss-lock
 Suggests: equivs, xorg, slim
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
