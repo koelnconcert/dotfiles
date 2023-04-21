@@ -1,6 +1,6 @@
 [submodule "complete-alias"]
-	path = complete-alias
+	path = .local/share/complete-alias
 	url = https://github.com/cykerway/complete-alias.git
 [submodule "diff-so-fancy"]
-	path = diff-so-fancy
+	path = .local/share/diff-so-fancy
 	url = https://github.com/so-fancy/diff-so-fancy.git
