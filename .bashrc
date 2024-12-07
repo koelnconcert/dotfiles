@@ -87,6 +87,7 @@ source ~/.local/share/complete-alias/complete_alias
 source-if /usr/share/liquidprompt/liquidprompt
 
 [[ -d ~/.local/bin ]] && PATH=$PATH:~/.local/bin
+[[ -d ~/apps/.bin ]] && PATH=$PATH:~/apps/.bin
 [[ -d /snap/bin ]] && PATH=$PATH:/snap/bin
 
 # Alias definitions.
