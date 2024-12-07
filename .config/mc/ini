@@ -89,6 +89,7 @@ filepos_max_saved_entries=1024
 safe_overwrite=false
 
 shadows=true
+shell_directory_timeout=900
 
 [Layout]
 message_visible=true
@@ -148,7 +149,7 @@ panel_scroll_center=false
 simple_swap=false
 
 [Panelize]
-Modified git files=git ls-files --modified
-Nach dem Patchen nach Rejects suchen=find . -name \\*.rej -print
 Suche SUID und SGID Programme=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Nach dem Patchen nach Rejects suchen=find . -name \\*.rej -print
+Modified git files=git ls-files --modified
 Suche nach *.orig nach dem Patchen=find . -name \\*.orig -print
