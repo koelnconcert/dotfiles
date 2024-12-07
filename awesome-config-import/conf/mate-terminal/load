@@ -1,2 +1,0 @@
-dconf load /org/mate/terminal/global/ < global.dconf
-dconf load /org/mate/terminal/profiles/ < profiles.dconf
