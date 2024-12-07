@@ -134,3 +134,10 @@ if command -v fdfind > /dev/null; then
 fi
 
 source-if ~/.bash_local
+
+# fnm
+export PATH="$HOME/.local/share/fnm:$PATH"
+if command -v fnm > /dev/null; then
+  eval "`fnm env`"
+  source <(fnm completions)
+fi
