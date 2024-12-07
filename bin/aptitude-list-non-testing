@@ -1,1 +1,1 @@
-aptitude -F '%p %t %O' search '?installed' | grep -v testing
+aptitude -F '%p|%t|%O' search '?installed' | grep -v testing | column -s '|' -t
