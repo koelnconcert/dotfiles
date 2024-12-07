@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+DIR=$(basename $0).d
+
+dconf load /org/mate/terminal/global/ < $DIR/global.dconf
+dconf load /org/mate/terminal/profiles/ < $DIR/profiles.dconf
