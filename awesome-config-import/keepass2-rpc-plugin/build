@@ -1,2 +1,0 @@
-wget -O KeePassRPC.plgx https://github.com/kee-org/keepassrpc/releases/download/v1.13.0/KeePassRPC.plgx
-equivs-build keepass2-rpc-plugin.equivs

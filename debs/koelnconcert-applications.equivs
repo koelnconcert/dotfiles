@@ -10,7 +10,7 @@ Version: 7
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends:
-Recommends: arduino, atom, autorenamer, bless, cheese, chromium-l10n, diffpdf, easytag, firefox-l10n-de, freecad, gramps, gscan2pdf, gupnp-tools, keepass2, keepass2-rpc-plugin, libreoffice-calc, libreoffice-impress, libreoffice-writer, nomacs, pidgin, pinta, playonlinux, qonk, scid, stockfish, sweethome3d, sweethome3d-furniture-nonfree, texlive, thunar, vlc, vlc-l10n, wireshark-gtk, zathura
+Recommends: arduino, atom, autorenamer, bless, cheese, chromium-l10n, diffpdf, easytag, firefox-l10n-de, freecad, gramps, gscan2pdf, gupnp-tools, keepassxc, libreoffice-calc, libreoffice-impress, libreoffice-writer, nomacs, pidgin, pinta, playonlinux, qonk, scid, stockfish, sweethome3d, sweethome3d-furniture-nonfree, texlive, thunar, vlc, vlc-l10n, wireshark-gtk, zathura
 Suggests: equivs, xorg
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
