@@ -106,7 +106,7 @@ source-if ~/.bash_aliases
 [ -x /usr/bin/minikube ] && source <(/usr/bin/minikube completion bash)
 
 command -v helm > /dev/null && source <(helm completion bash)
-command -v avp > /dev/null && source <(avp completion)
+command -v avp > /dev/null && source <(avp completion bash)
 
 source-if ~/src/koelnconcert/devbox/bash_completion
 
