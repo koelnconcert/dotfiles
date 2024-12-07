@@ -3,5 +3,6 @@ set -eu
 
 DIR="$0.d"
 
+echo import dconf for mate-terminal
 dconf load /org/mate/terminal/global/ < $DIR/global.dconf
 dconf load /org/mate/terminal/profiles/ < $DIR/profiles.dconf
