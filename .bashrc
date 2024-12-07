@@ -141,3 +141,8 @@ if command -v fnm > /dev/null; then
   eval "`fnm env`"
   source <(fnm completions)
 fi
+
+# https://github.com/httpie/cli/issues/1583 fix https in httpie with python3-requests 3.32.3
+export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+
+
