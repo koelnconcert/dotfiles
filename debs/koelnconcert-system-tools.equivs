@@ -6,11 +6,30 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-system-tools
-Version: 4
+Version: 5
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
-Recommends: apt-listbugs, apt-listchanges, aptitude, btrfs-progs, cryptsetup, dmsetup, etckeeper, hdparm, iftop, laptop-detect, locales, man-db, manpages, nfs-common, openssh-server, pciutils, software-properties-common, sudo, task-german
+Recommends:
+  apt-listbugs,
+  apt-listchanges,
+  aptitude,
+  btrfs-progs,
+  cryptsetup,
+  dmsetup,
+  etckeeper,
+  hdparm,
+  iftop,
+  laptop-detect,
+  locales,
+  man-db,
+  manpages,
+  nfs-common,
+  openssh-server,
+  pciutils,
+  software-properties-common,
+  sudo,
+  task-german
 Suggests: equivs
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>

@@ -6,12 +6,16 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-audiostation
-Version: 1
+Version: 2
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends:
-Recommends: ardour, giada, jackd, lilypond, pulseaudio-module-jack
-Suggests: equivs, xorg
+Recommends:
+  ardour,
+  giada,
+  jackd,
+  lilypond,
+  pulseaudio-module-jack
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 # Architecture: all
