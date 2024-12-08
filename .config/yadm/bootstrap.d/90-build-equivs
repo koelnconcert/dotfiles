@@ -8,7 +8,7 @@ cd "$HOME/$DEBS"
 echo "Build equivs packages in ~/$DEBS"
 
 for I in *.equivs; do
-  #equivs-build $I
+  equivs-build $I
   name=${I%.equivs}
   latest_link="${name}_latest.deb"
   latest=$(
