@@ -20,8 +20,11 @@ for I in *.equivs; do
   [[ -L $latest_link ]] && rm $latest_link
   ln -s $latest $latest_link
 done
-
 echo
+
+echo "Update Packages (local debian repo)"
+./update-packages
+
 echo "List built equivs packages"
 
 ls -l *_latest.deb
