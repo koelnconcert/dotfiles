@@ -1,2 +1,2 @@
 #!/bin/sh
-dpkg-scanpackage -m . > Packages
+dpkg-scanpackages -m . > Packages
