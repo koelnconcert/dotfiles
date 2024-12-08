@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
 
 DEBS=debs
@@ -7,13 +7,23 @@ cd "$HOME/$DEBS"
 
 echo "Build equivs packages in ~/$DEBS"
 
-for I in *.equivs; do 
-  equivs-build $I
+for I in *.equivs; do
+  #equivs-build $I
+  name=${I%.equivs}
+  latest_link="${name}_latest.deb"
+  latest=$(
+    ls ${name}_*.deb \
+    | grep -v $latest_link \
+    | sort --version-sort --reverse \
+    | head --lines 1
+  )
+  [[ -L $latest_link ]] && rm $latest_link
+  ln -s $latest $latest_link
 done
 
 echo
 echo "List built equivs packages"
 
-ls -l *.deb
+ls -l *_latest.deb
 
-echo "Install packages you want via 'sudo apt install ~/$DEBS/{{package}}.deb'"
+echo "Install packages you want via 'sudo apt install ~/$DEBS/{{package}}_latest.deb'"
