@@ -1,3 +1,7 @@
 import = [
     "~/.config/alacritty/themes/themes/afterglow.toml"
 ]
+
+[font]
+normal = { family = "hack", style = "Regular" }
+size = 11
