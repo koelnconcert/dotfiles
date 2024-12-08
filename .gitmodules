@@ -4,3 +4,6 @@
 [submodule "diff-so-fancy"]
 	path = .local/share/diff-so-fancy
 	url = https://github.com/so-fancy/diff-so-fancy.git
+[submodule ".config/alacritty/themes"]
+	path = .config/alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme.git
