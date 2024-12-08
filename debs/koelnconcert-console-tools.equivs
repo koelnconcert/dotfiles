@@ -26,7 +26,6 @@ Recommends:
   fzf,
   genisoimage,
   git,
-  git-hub,
   git-extras,
   git-hub,
   git-lfs,
