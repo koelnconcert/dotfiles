@@ -14,6 +14,7 @@ Recommends:
   apt-listbugs,
   apt-listchanges,
   aptitude,
+  bolt,
   btrfs-progs,
   cryptsetup,
   dmsetup,
