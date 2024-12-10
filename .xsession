@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# disable screensaver
+xset s off
+xset -dpms
+
 # auto lock on sleep
 exec xss-lock slock &
 
