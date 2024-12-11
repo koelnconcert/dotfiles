@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-console-tools
-Version: 13
+Version: 14
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
@@ -44,6 +44,7 @@ Recommends:
   moreutils,
   multitail,
   mutt,
+  ncal,
   ncdu,
   netcat,
   nmap,
