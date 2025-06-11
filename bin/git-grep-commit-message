@@ -1,0 +1,61 @@
+#!/bin/bash
+
+function usage() {
+  cmd=$(basename $0)
+  cat <<EOF
+
+NAME
+
+  $cmd - list commits with nearest tag (or just tags), where the commit message matches
+
+SYNOPSIS
+
+  $cmd [-s] SEARCH_TEXT
+  
+  
+OPTIONS
+
+  -r  -- list only affected releases
+EOF
+}
+
+while getopts "rs" opt; do
+  case $opt in
+    r) OPT_RELEASE=1;;
+    *) usage && exit 1;;
+  esac
+done
+shift $((OPTIND-1))
+    
+search="$1"
+
+[[ -z $search ]] && usage && exit 0
+
+LOG_FORMAT="%h %ai <%an> %s"
+log=$(git log --all --format="$LOG_FORMAT" --grep "$1")
+chars=$(echo "$log" | wc -c)
+[[ $chars -gt 1 ]] || exit 0
+
+function get_release() {
+  commit=$1
+  (
+  git describe --contains $commit 2>/dev/null \
+  || git branch --contains $commit 2>/dev/null
+  ) \
+  | tr -d ' *' \
+  | cut -d^ -f1 \
+  | cut -d~ -f1
+}
+
+if [[ -n $OPT_RELEASE ]]; then
+  echo "$log" | while read commit rest; do
+    get_release $commit
+  done \
+  | sort -V \
+  | uniq
+else
+  echo "$log" | while read commit d1 d2 d3 rest; do
+    release=$(get_release $commit)
+    echo "$commit $d1 $d2 $d3 [$release] $rest"
+  done
+fi
