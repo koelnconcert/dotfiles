@@ -123,6 +123,7 @@ xterm=
 color_terminals=
 
 xterm-256color=
+alacritty=
 
 [Panels]
 show_mini_info=true
@@ -149,7 +150,7 @@ panel_scroll_center=false
 simple_swap=false
 
 [Panelize]
-Suche SUID und SGID Programme=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Nach dem Patchen nach Rejects suchen=find . -name \\*.rej -print
-Modified git files=git ls-files --modified
 Suche nach *.orig nach dem Patchen=find . -name \\*.orig -print
+Suche SUID und SGID Programme=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
+Modified git files=git ls-files --modified
+Nach dem Patchen nach Rejects suchen=find . -name \\*.rej -print
