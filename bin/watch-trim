@@ -1,0 +1,26 @@
+#!/bin/bash
+if [[ -z $1 ]]; then
+  cat <<__EOF
+Usage
+
+  $(basename $0) [ <watch_parameter>* -- ] <command>
+
+__EOF
+  exit 1;
+fi
+
+watch_params=
+# split everything before the first "--" argument into watch_params variable
+for I in "$@"; do
+  if [[ $I == "--" ]]; then
+    while [[ $1 != "--" ]]; do
+      watch_params="$watch_params $1"
+      shift
+    done
+    shift;
+    break;
+  fi
+done
+
+cols=$(tput cols)
+watch $watch_params "($*) | cut -c 1-$cols"

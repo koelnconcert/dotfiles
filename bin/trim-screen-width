@@ -1,0 +1,3 @@
+#!/bin/bash
+cols=$(tput cols)
+cut -c 1-$cols
