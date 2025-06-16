@@ -1,6 +1,7 @@
+[include]
+  path = config.local
 [user]
 	name = Sebastian Peters
-	email = sebastian.peters@tib.eu
 [core]
 #	autocrlf = input
 [log]
