@@ -86,10 +86,6 @@ source ~/.local/share/complete-alias/complete_alias
 
 source-if /usr/share/liquidprompt/liquidprompt
 
-[[ -d ~/.local/bin ]] && PATH=$PATH:~/.local/bin
-[[ -d ~/apps/.bin ]] && PATH=$PATH:~/apps/.bin
-[[ -d /snap/bin ]] && PATH=$PATH:/snap/bin
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -122,8 +118,6 @@ add-alias ()
 
 [ -n "$DISPLAY" ] && xset b off
 
-export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
-
 source-if /usr/share/doc/fzf/examples/key-bindings.bash
 source-if /usr/share/doc/fzf/examples/completion.bash
 
@@ -136,7 +130,6 @@ fi
 source-if ~/.bash_local
 
 # fnm
-export PATH="$HOME/.local/share/fnm:$PATH"
 if command -v fnm > /dev/null; then
   eval "`fnm env`"
   source <(fnm completions)
