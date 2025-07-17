@@ -453,29 +453,34 @@ clientkeys = awful.util.table.join(
             local local_hostname = fhostname:read("*line")
             fhostname:close()
 
-            if string.find(c.name, "^mc ") ~= nil then -- midnight commander
-              _, _, user, hostname, dir = string.find(c.name, "^mc %[(%w+)@(%w+)%]:(.+)$")
-            elseif string.find(c.name, "^%d+:%d+:%d+ ") ~= nil then -- liquidprompt with time
-              naughty.notify({text = "foobar"})
-              if string.find(c.name, "@") then
-                  _, _, user, hostname, dir = string.find(c.name, "^%d+:%d+:%d+ %[(%w+)@(%w+):(.+)%]")
-              else
-                  _, _, user, dir = string.find(c.name, "^%d+:%d+:%d+ %[(%w+):(.+)%]")
-                  hostname = local_hostname
-              end
-            else -- normal shell
-              _, _, user, hostname, dir = string.find(c.name, "^(%w+)@(%w+): (.+)$")
+            local hostname, user, dir
+
+            regexp_mc = "^mc %[(.+)@(.+)%]:(.+)$" -- midnight commander
+            regexp_shell = "^%[(.+):(.+)%]"
+            if string.find(c.name, regexp_mc) then
+                _, _, user, hostname, dir = string.find(c.name, regexp_mc)
+            elseif string.find(c.name, regexp_shell) then
+                _, _, user, dir = string.find(c.name, regexp_shell)
+                hostname = local_hostname
             end
 
             local local_user = os.getenv("USER")
             local home = os.getenv("HOME")
             local cmd
-            naughty.notify({text = hostname})
-            naughty.notify({text = user})
 
-            if hostname ~= local_hostname then
-                naughty.notify({text = "foreign hosts not (yet) supported"})
-                return
+            debug_text= "c.name=" .. (c.name or "<nil>")
+              .. "\nhostname=" .. (hostname or "<nil>")
+              .. "\nlocal_hostname=" .. (local_hostname or "<nil>")
+              .. "\nuser=" .. (user or "<nil>")
+              .. "\nlocal_user=" .. (local_user or "<nil>")
+              .. "\ndir=" .. (dir or "<nil>")
+            --naughty.notify({text = debug_text})
+
+            if not dir then
+                naughty.notify({text = "Could not get directory from client title. Starting a default terminal."})
+                cmd = terminal
+            elseif hostname ~= local_hostname then
+                naughty.notify({text = "Foreign hosts not (yet) supported. Starting a default terminal."})            cmd = terminal
             elseif user ~= local_user then
                 local sudo_prompt = "[sudo] password for %p to access %U@%h:" .. dir .. ": "
                 local sudo_cmd = "sh -c 'cd " .. dir .. "; bash'"
@@ -485,7 +490,6 @@ clientkeys = awful.util.table.join(
                 cmd = terminal .. " --working-directory " .. dir
             end
 
-            naughty.notify({text = cmd})
             awful.util.spawn(cmd)
         end,
         {description = "open terminal in same directory", group = "launcher"}),
