@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-awesome-config
-Version: 16
+Version: 17
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 Depends: awesome, awesome-extra, alacritty
@@ -14,13 +14,13 @@ Recommends:
   arandr,
   autorandr,
   brightnessctl,
-  conky,
+  conky-std,
   diodon,
   ethtool,
   fdpowermon,
   redshift-gtk,
   fonts-firacode,
-  fonts-hack-ttf,
+  fonts-hack,
   nautilus-dropbox,
   network-manager-gnome,
   pasystray,
