@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-console-tools
-Version: 14
+Version: 15
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
@@ -51,7 +51,7 @@ Recommends:
   openssh-client,
   orpie,
   perltidy,
-  p7zip,
+  7zip,
   plocate,
   pmount,
   pssh,
