@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-console-tools
-Version: 15
+Version: 16
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
@@ -16,7 +16,6 @@ Recommends:
   bsdgames,
   byobu,
   bzip2,
-  cpufrequtils,
   curl,
   diffstat,
   dlocate,
@@ -35,6 +34,7 @@ Recommends:
   httpie,
   jq,
   libxml2-utils,
+  linux-cpupower,
   liquidprompt,
   lm-sensors,
   lsof,
@@ -80,7 +80,8 @@ Recommends:
   usbutils,
   wdiff,
   wget,
-  xml-twig-tools
+  xml-twig-tools,
+  yq
 # Provides: <comma-separated list of packages>
 # Replaces: <comma-separated list of packages>
 # Architecture: all

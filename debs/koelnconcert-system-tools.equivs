@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-system-tools
-Version: 6
+Version: 7
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 # Depends: <comma-separated list of packages>
@@ -28,7 +28,6 @@ Recommends:
   nfs-common,
   openssh-server,
   pciutils,
-  software-properties-common,
   sudo,
   task-german
 Suggests: equivs
