@@ -6,7 +6,7 @@ Priority: optional
 # Homepage: <enter URL here; no default>
 Standards-Version: 3.9.2
 Package: koelnconcert-awesome-config
-Version: 17
+Version: 18
 # Maintainer: Your Name <yourname@example.com>
 # Pre-Depends: <comma-separated list of packages>
 Depends: awesome, awesome-extra, alacritty
@@ -22,7 +22,8 @@ Recommends:
   fonts-firacode,
   fonts-hack,
   nautilus-dropbox,
-  network-manager-gnome,
+  network-manager-applet,
+  nm-connection-editor,
   pasystray,
   pavucontrol,
   suckless-tools,
